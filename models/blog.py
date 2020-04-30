@@ -1,4 +1,4 @@
-import uuid
+import shortuuid
 import datetime
 from database import Database
 from models.post import Post
@@ -8,7 +8,7 @@ class Blog(object):
         self.author=author
         self.title=title
         self.description=description
-        self.id=uuid.uuid4().hex if id is None else id
+        self.id=shortuuid.ShortUUID().random(length=5) if id is None else id
 
     def new_post(self):
         title = input("Name your post: ")

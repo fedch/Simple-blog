@@ -1,5 +1,5 @@
 from database import Database
-import uuid
+import shortuuid
 import datetime
 
 class Post(object):
@@ -10,9 +10,9 @@ class Post(object):
         self.title = title
         self.author = author
         self.content = content
-        self.date = date
+        self.created_date = date
         # UUID - univerdal unique id. UUID4 - random id, HEX - 32 character hexadecimal string. || ELSE use ID given in the INIT method
-        self.id = uuid.uuid4().hex if id is None else id
+        self.id = shortuuid.ShortUUID().random(length=10) if id is None else id
 
     def save_to_mongo(self):
         Database.insert(collection='posts',
@@ -26,7 +26,7 @@ class Post(object):
         'title': self.title,
         'author': self.author,
         'content': self.content,
-        'date': self.date
+        'created_date': self.created_date
         }
 
     @classmethod
@@ -37,7 +37,7 @@ class Post(object):
                     title=post_data['title'],
                     author=post_data['author'],
                     content=post_data['content'],
-                    date=post_data['date'],
+                    date=post_data['created_date'],
                     id=post_data['id'])
 
     @staticmethod
