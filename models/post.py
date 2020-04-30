@@ -10,7 +10,7 @@ class Post(object):
         self.title = title
         self.author = author
         self.content = content
-        self.created_date = date
+        self.date = date
         # UUID - univerdal unique id. UUID4 - random id, HEX - 32 character hexadecimal string. || ELSE use ID given in the INIT method
         self.id = uuid.uuid4().hex if id is None else id
 
@@ -26,7 +26,7 @@ class Post(object):
         'title': self.title,
         'author': self.author,
         'content': self.content,
-        'created_date': self.created_date
+        'date': self.date
         }
 
     @classmethod
@@ -37,7 +37,7 @@ class Post(object):
                     title=post_data['title'],
                     author=post_data['author'],
                     content=post_data['content'],
-                    date=post_data['created_date'],
+                    date=post_data['date'],
                     id=post_data['id'])
 
     @staticmethod

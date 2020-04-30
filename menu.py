@@ -60,4 +60,4 @@ class Menu(object): # extends from object
         blog = Blog.from_mongo(blog_to_see)
         posts = blog.get_posts()
         for post in posts:
-            print("Date: {}, Title: {}\n\n{}".format(post['created_date'], post['title'], post['content']))
+            print("Date: {}, Title: {}\n\n{}".format(post['date'], post['title'], post['content']))
