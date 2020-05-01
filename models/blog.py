@@ -45,9 +45,17 @@ class Blog(object):
 
     # Instead of using staticmethod, use classmethod. CLS=Blog. Returns object of type blog
     @classmethod
-    def from_mongo(cls, id):
+    def from_mongo_id(cls, id):
         blog_data = Database.find_one(collection='blogs',
                                 query={'id': id})
+        return cls(author=blog_data['author'],
+                    title=blog_data['title'],
+                    description=blog_data['description'],
+                    id=blog_data['id'])
+    @classmethod
+    def from_mongo_author(cls, author):
+        blog_data = Database.find_one(collection='blogs',
+                                query={'author': author})
         return cls(author=blog_data['author'],
                     title=blog_data['title'],
                     description=blog_data['description'],
