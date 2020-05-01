@@ -11,9 +11,9 @@ class Blog(object):
         self.id=shortuuid.ShortUUID().random(length=5) if id is None else id
 
     def new_post(self):
-        title = input("Name your post: ")
-        content = input("What's on yout mind today? ")
-        date = input("Enter post date (DDMMYYY), may leave blank: ")
+        title = input("\nName your post: ")
+        content = input("\nWhat's on yout mind today? ")
+        date = input("\nEnter post date (DDMMYYY), may leave blank: ")
         if date == "":
             date = datetime.datetime.utcnow()
         else:
