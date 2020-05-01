@@ -11,8 +11,8 @@ class Post(object):
         self.author = author
         self.content = content
         self.created_date = date
-        # UUID - univerdal unique id. UUID4 - random id, HEX - 32 character hexadecimal string. || ELSE use ID given in the INIT method
-        self.id = shortuuid.ShortUUID().random(length=10) if id is None else id
+        # ELSE use ID given in the INIT method:
+        self.id = shortuuid.ShortUUID().random(length=5) if id is None else id
 
     def save_to_mongo(self):
         Database.insert(collection='posts',
